@@ -1,6 +1,14 @@
 name: GitHub Actions Demo
-on: [push]
+on: 
+  workflow_run:
+    workflow: ["CI"]
+    branches:["master"]
+    types: ["completed"]
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: straging
+    
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
