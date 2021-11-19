@@ -1,0 +1,69 @@
+name: Deploy production
+
+on:
+  workflow_run:
+    workflows: ["Deploy staging"]
+    branches: [master]
+    types: [completed]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      ABC: sdfsd
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          echo "ddd"
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: Deploy MyApp
+        env:
+          REACT_APP_SERVICE_ZONE: dsf
+        run: |
+          echo "abce"
+
+      - name: Deploy MyApp2
+        env:
+          REACT_APP_SERVICE_ZONE: sdf
+        run: |
+          echo "defg"
+
+      - name: Deploy MyApp3
+        env:
+          REACT_APP_SERVICE_ZONE: abc.com
+          REACT_APP_FEATURE_FLAGS: ""
+        run: |
+          echo "sdfds"
+
+      - name: Deploy MyApp3
+        env:
+          REACT_APP_SERVICE_ZONE: def.com
+        run: |
+          echo "sdfdsf"
+
+      - name: Deploy MyApp4
+        env:
+          REACT_APP_SERVICE_ZONE: abc.com
+        run: |
+          echo "sdfdsf"
+
+      - name: Deploy MyApp5
+        env:
+          REACT_APP_SERVICE_ZONE: cdsf
+        run: |
+          echo "sdfds"
+
+      - name: Deploy MyApp6
+        env:
+          REACT_APP_SERVICE_ZONE: hgh.com
+        run: |
+          echo "sdfds"
